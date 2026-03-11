@@ -1,0 +1,22 @@
+# 디렉토리 및 빌드 결과물 캐시 무시
+**/node_modules/
+**/dist/
+**/build/
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/.idea/
+
+# 숨김 / 로컬 캐시
+.git/
+.gitignore
+.env
+.env.local
+
+# 기타 무시할 폴더 (볼륨 등)
+database/
+_dev_scripts/
+uploads/
+bnf_uploads/
+publish/

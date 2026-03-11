@@ -1,0 +1,410 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html.theme-switching *,
+  html.theme-switching *::before,
+  html.theme-switching *::after {
+    transition: none !important;
+  }
+
+  body {
+    font-family: 'Pretendard', system-ui, -apple-system, sans-serif;
+    background-color: #F8FAFC;
+    color: #1A1A1A;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @apply transition-colors duration-200;
+  }
+
+  html.dark body {
+    background-color: #111827;
+    /* gray-900 */
+    color: #F3F4F6;
+    /* gray-100 */
+  }
+
+  ::selection {
+    background-color: rgba(43, 92, 173, 0.2);
+    color: #2B5CAD;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow;
+  }
+
+  .btn-primary {
+    @apply bg-bnf-blue text-white hover:bg-blue-700 focus:ring-bnf-blue active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply bg-white text-bnf-dark border border-gray-200 hover:bg-gray-50 focus:ring-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600;
+  }
+
+  .btn-success {
+    @apply bg-bnf-green text-white hover:bg-green-600 focus:ring-bnf-green;
+  }
+
+  .btn-warning {
+    @apply bg-bnf-orange text-white hover:bg-orange-500 focus:ring-bnf-orange;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 text-white hover:bg-red-600 focus:ring-red-500;
+  }
+
+  .btn-ghost {
+    @apply text-bnf-gray hover:text-bnf-dark hover:bg-gray-100 shadow-none hover:shadow-none dark:text-gray-400 dark:hover:text-gray-100 dark:hover:bg-gray-800;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-bnf-dark placeholder-gray-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-bnf-blue/20 focus:border-bnf-blue dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 dark:placeholder-gray-500 dark:focus:border-bnf-blue dark:focus:ring-bnf-blue/50;
+  }
+
+  .input-error {
+    @apply border-red-400 focus:ring-red-200 focus:border-red-400;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-bnf-dark mb-1.5 dark:text-gray-200;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-card border border-gray-100 overflow-hidden dark:bg-gray-800 dark:border-gray-700;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-elevated hover:-translate-y-0.5;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-blue {
+    @apply bg-blue-50 text-bnf-blue dark:bg-blue-900/40 dark:text-blue-300;
+  }
+
+  .badge-green {
+    @apply bg-green-50 text-green-600 dark:bg-green-900/40 dark:text-green-300;
+  }
+
+  .badge-orange {
+    @apply bg-orange-50 text-orange-600 dark:bg-orange-900/40 dark:text-orange-300;
+  }
+
+  .badge-red {
+    @apply bg-red-50 text-red-600 dark:bg-red-900/40 dark:text-red-300;
+  }
+
+  .badge-gray {
+    @apply bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400;
+  }
+
+  .link {
+    @apply text-bnf-blue hover:text-blue-700 transition-colors duration-200 hover:underline underline-offset-2 dark:text-blue-400 dark:hover:text-blue-300;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-bnf-blue via-bnf-green to-bnf-orange bg-clip-text text-transparent;
+  }
+
+  /* Mobile-specific utilities */
+  .mobile-scroll {
+    @apply overflow-x-auto -mx-4 px-4;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Prevent text from wrapping vertically on mobile */
+  .no-wrap-mobile {
+    @apply whitespace-nowrap;
+  }
+
+  @media (min-width: 768px) {
+    .no-wrap-mobile {
+      @apply whitespace-normal;
+    }
+  }
+
+  .animate-stagger>* {
+    animation: slideUp 0.4s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-stagger>*:nth-child(1) {
+    animation-delay: 0.05s;
+  }
+
+  .animate-stagger>*:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  .animate-stagger>*:nth-child(3) {
+    animation-delay: 0.15s;
+  }
+
+  .animate-stagger>*:nth-child(4) {
+    animation-delay: 0.2s;
+  }
+
+  .animate-stagger>*:nth-child(5) {
+    animation-delay: 0.25s;
+  }
+
+  .animate-stagger>*:nth-child(6) {
+    animation-delay: 0.3s;
+  }
+
+  .animate-stagger>*:nth-child(7) {
+    animation-delay: 0.35s;
+  }
+
+  .animate-stagger>*:nth-child(8) {
+    animation-delay: 0.4s;
+  }
+
+  /* Thin scrollbar for sidebar navigation */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.4) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.4);
+    border-radius: 2px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.6);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #2B5CAD;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Toast animations */
+.toast-enter {
+  animation: toastEnter 0.3s ease-out forwards;
+}
+
+.toast-exit {
+  animation: toastExit 0.2s ease-in forwards;
+}
+
+@keyframes toastEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toastExit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+}
+
+/* ReactQuill Custom Styles */
+.quill-wrapper {
+  @apply w-full flex flex-col rounded-xl border border-gray-200 dark:border-gray-700 transition-all duration-200 overflow-hidden;
+}
+
+.quill-wrapper:focus-within {
+  @apply ring-2 ring-bnf-orange/50 border-bnf-orange border-opacity-50 dark:border-bnf-orange dark:border-opacity-50 outline-none;
+}
+
+.ql-toolbar.ql-snow {
+  @apply !border-0 !border-b !border-gray-200 bg-gray-50 transition-colors;
+  font-family: inherit;
+  padding: 12px;
+}
+
+.ql-container.ql-snow {
+  @apply !border-0 bg-white text-bnf-dark dark:bg-gray-900 dark:text-gray-200 transition-colors;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.ql-editor {
+  min-height: inherit;
+  @apply h-full;
+  padding: 1.5rem;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.ql-editor p {
+  @apply mb-2;
+}
+
+/* Make images and videos within editor responsive by default */
+.ql-editor img,
+.ql-editor iframe,
+.ql-editor video {
+  max-width: 100% !important;
+  height: auto !important;
+  @apply rounded-md shadow-sm my-4;
+}
+
+/* ReactQuill Dark Mode Overrides */
+html.dark .ql-snow .ql-stroke {
+  stroke: #9ca3af;
+  /* text-gray-400 */
+}
+
+html.dark .ql-snow .ql-fill,
+html.dark .ql-snow .ql-stroke.ql-fill {
+  fill: #9ca3af;
+  /* text-gray-400 */
+}
+
+html.dark .ql-snow .ql-picker {
+  color: #9ca3af;
+}
+
+html.dark .ql-snow .ql-picker-options {
+  background-color: #1f2937;
+  /* gray-800 */
+  border-color: #374151;
+  /* gray-700 */
+}
+
+html.dark .ql-snow .ql-picker-item:hover,
+html.dark .ql-snow .ql-picker-label.ql-active {
+  color: #60a5fa;
+  /* blue-400 */
+}
+
+html.dark .ql-snow.ql-toolbar button:hover,
+html.dark .ql-snow .ql-toolbar button:hover,
+html.dark .ql-snow.ql-toolbar button:focus,
+html.dark .ql-snow .ql-toolbar button:focus,
+html.dark .ql-snow.ql-toolbar button.ql-active,
+html.dark .ql-snow .ql-toolbar button.ql-active,
+html.dark .ql-snow.ql-toolbar .ql-picker-label:hover,
+html.dark .ql-snow .ql-toolbar .ql-picker-label:hover,
+html.dark .ql-snow.ql-toolbar .ql-picker-label.ql-active,
+html.dark .ql-snow .ql-toolbar .ql-picker-label.ql-active,
+html.dark .ql-snow.ql-toolbar .ql-picker-item:hover,
+html.dark .ql-snow .ql-toolbar .ql-picker-item:hover,
+html.dark .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
+html.dark .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
+  color: #60a5fa;
+  /* blue-400 */
+}
+
+html.dark .ql-snow.ql-toolbar button.ql-active .ql-stroke,
+html.dark .ql-snow .ql-toolbar button.ql-active .ql-stroke,
+html.dark .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+html.dark .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+html.dark .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+html.dark .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+html.dark .ql-snow.ql-toolbar button.ql-active .ql-stroke-miter,
+html.dark .ql-snow .ql-toolbar button.ql-active .ql-stroke-miter,
+html.dark .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+html.dark .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,
+html.dark .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
+html.dark .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
+html.dark .ql-snow.ql-toolbar button:hover .ql-stroke,
+html.dark .ql-snow .ql-toolbar button:hover .ql-stroke,
+html.dark .ql-snow.ql-toolbar button:focus .ql-stroke,
+html.dark .ql-snow .ql-toolbar button:focus .ql-stroke,
+html.dark .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke,
+html.dark .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke,
+html.dark .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke,
+html.dark .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke {
+  stroke: #60a5fa;
+  /* blue-400 */
+}
+
+/* 토스트 알림 프로그레스바 애니메이션 */
+@keyframes shrink-width {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0%;
+  }
+}

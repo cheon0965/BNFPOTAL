@@ -1,0 +1,38 @@
+﻿# OS / editor
+Thumbs.db
+.DS_Store
+.vs/
+.vscode/
+
+# .NET build artifacts
+backend/bin/
+backend/obj/
+backend/appsettings.json
+backend/appsettings.*.json
+!backend/appsettings.example.json
+
+# Frontend build / dependency artifacts
+frontend/node_modules/
+frontend/dist/
+
+# Publish outputs
+publish/
+publish_docker/
+
+# Database scripts (keep local, do not upload)
+database/*.sql
+
+# Frontend temp/log files (based on clean_project.bat)
+frontend/build*.txt
+frontend/build*.log
+frontend/build-test.mjs
+frontend/build_script.js
+frontend/debug.log
+frontend/error.log
+frontend/vite.log
+frontend/vite_utf8.log
+
+# Generic temp logs
+*.tmp
+*.temp
+*.log
